@@ -1,0 +1,8 @@
+#### router transition/animation
+
+in other for animation to be added to a route depending on how the slide in should be always add a data property to the route configuration
+-Eg {
+path: 'about',
+component: OneComponent,
+data: { animation: 'One' }
+}

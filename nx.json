@@ -29,6 +29,27 @@
     "e-bills-e2e": {
       "tags": [],
       "implicitDependencies": ["e-bills"]
+    },
+    "shared-ui": {
+      "tags": []
+    },
+    "shared-styles": {
+      "tags": []
+    },
+    "shared-component": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "material": {
+      "tags": []
+    },
+    "layout": {
+      "tags": []
+    },
+    "products": {
+      "tags": []
     }
   }
 }

@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@sbsc/shared-ui": ["libs/shared-ui/src/index.ts"],
+      "@sbsc/shared-styles": ["libs/shared-styles/src/index.ts"],
+      "@sbsc/shared-component": ["libs/shared-component/src/index.ts"],
+      "@sbsc/auth": ["libs/auth/src/index.ts"],
+      "@sbsc/model": ["libs/shared/model/index.ts"],
+      "@sbsc/material": ["libs/material/src/index.ts"],
+      "@sbsc/layout": ["libs/layout/src/index.ts"],
+      "@sbsc/products": ["libs/products/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

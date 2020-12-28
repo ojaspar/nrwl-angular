@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "projects": {
+    "e-bills": {
+      "projectType": "application",
+      "root": "apps/e-bills",
+      "sourceRoot": "apps/e-bills/src",
+      "prefix": "sbsc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/e-bills",
+            "index": "apps/e-bills/src/index.html",
+            "main": "apps/e-bills/src/main.ts",
+            "polyfills": "apps/e-bills/src/polyfills.ts",
+            "tsConfig": "apps/e-bills/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/e-bills/src/favicon.ico",
+              "apps/e-bills/src/assets"
+            ],
+            "styles": ["apps/e-bills/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/e-bills/src/environments/environment.ts",
+                  "with": "apps/e-bills/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "e-bills:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "e-bills:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "e-bills:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/e-bills/src/**/*.ts",
+              "apps/e-bills/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/e-bills"],
+          "options": {
+            "jestConfig": "apps/e-bills/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "e-bills-e2e": {
+      "root": "apps/e-bills-e2e",
+      "sourceRoot": "apps/e-bills-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/e-bills-e2e/cypress.json",
+            "tsConfig": "apps/e-bills-e2e/tsconfig.e2e.json",
+            "devServerTarget": "e-bills:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "e-bills:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/e-bills-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "root": "libs/shared-ui",
+      "sourceRoot": "libs/shared-ui/src",
+      "prefix": "sbsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-ui/src/**/*.ts",
+              "libs/shared-ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-ui"],
+          "options": {
+            "jestConfig": "libs/shared-ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-styles": {
+      "projectType": "library",
+      "root": "libs/shared-styles",
+      "sourceRoot": "libs/shared-styles/src",
+      "prefix": "sbsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-styles/src/**/*.ts",
+              "libs/shared-styles/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-styles"],
+          "options": {
+            "jestConfig": "libs/shared-styles/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "e-bills"
+}
